@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/bilbo_swash_caps</item>
+        <item>@font/holtwood_one_sc</item>
+        <item>@font/luckiest_guy</item>
+        <item>@font/playball</item>
+        <item>@font/warnes</item>
+    </array>
+</resources>

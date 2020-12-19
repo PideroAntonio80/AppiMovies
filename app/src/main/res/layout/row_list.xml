@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+
+    android:id="@+id/rowList"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_marginBottom="5dp"
+    android:background="@color/colorAccent"
+    android:weightSum="100">
+<!--    android:onClick="selectMovie">-->
+
+    <ImageView
+        android:id="@+id/imgMovie"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="34"
+        android:scaleType="fitXY"
+        tools:srcCompat="@drawable/ic_movie_creation_black_24dp" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="66"
+        android:layout_height="match_parent"
+        android:weightSum="10"
+        android:background="@color/colorGold"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="7"
+            android:paddingTop="8dp"
+            android:textColor="@color/colorPurple"
+            android:text="hola"
+            android:fontFamily="serif"
+            android:paddingLeft="15dp"
+            android:textSize="30sp"/>
+
+        <TextView
+            android:id="@+id/txtFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:paddingLeft="15dp"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="serif"
+            android:textSize="20sp"/>
+    </LinearLayout>
+</LinearLayout>
