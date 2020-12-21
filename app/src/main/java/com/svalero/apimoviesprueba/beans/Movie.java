@@ -28,7 +28,7 @@ public class Movie {
     private String image;
     private String fecha;
     private String puntos;
-    private String votos;
+    private int votos;
     private String lengua;
     private String genero;
 
@@ -68,10 +68,10 @@ public class Movie {
     public void setPuntos(String puntos) {
         this.puntos = puntos;
     }
-    public String getVotos() {
+    public int getVotos() {
         return votos;
     }
-    public void setVotos(String votos) {
+    public void setVotos(int votos) {
         this.votos = votos;
     }
     public String getLengua() {
@@ -103,7 +103,7 @@ public class Movie {
                 movie.setImage("https://image.tmdb.org/t/p/original" + json_data.getString(POSTER_PATH));
                 movie.setFecha(json_data.getString(FECHA));
                 movie.setPuntos(json_data.getString(PUNTOS));
-                movie.setVotos(json_data.getString(VOTOS));
+                movie.setVotos(json_data.getInt(VOTOS));
                 movie.setLengua(json_data.getString(LENGUA));
                 movie.setGenero(json_data.getString(GENERO));
 
@@ -134,7 +134,7 @@ public class Movie {
         Collections.sort(lista, new Comparator<Movie>() {
             @Override
             public int compare(Movie o1, Movie o2) {
-                return Integer.parseInt(new String(String.valueOf(o2.getVotos().compareTo(new String(o1.getVotos())))));
+                return new Integer(o2.getVotos()).compareTo(new Integer(o1.getVotos()));
             }
         });
         return lista;

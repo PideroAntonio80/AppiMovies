@@ -64,7 +64,7 @@ public class OneMovieActivity extends AppCompatActivity implements OneMovieContr
         tvLengua.setText(movie.getLengua());
         tvFecha.setText(movie.getFecha());
         tvPuntos.setText(movie.getPuntos());
-        tvVotos.setText(movie.getVotos());
+        tvVotos.setText(String.valueOf(movie.getVotos()));
         tvSinopsis.setText(movie.getSinopsis());
     }
 }

@@ -73,7 +73,7 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterView
         holder.tituloF.setText(movie.getTitulo());
         holder.fechaF.setText(movie.getFecha());
         holder.puntos.setText(movie.getPuntos());
-        holder.votos.setText(movie.getVotos());
+        holder.votos.setText(String.valueOf(movie.getVotos()));
 
     }
 
