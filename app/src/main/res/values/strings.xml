@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">ApiMoviesPrueba</string>
+    <string name="language_title">Idioma:</string>
+    <string name="date_film_detail">Fecha:</string>
+    <string name="votes_film_detail">Votos:</string>
+    <string name="activity_one_movie_tv_puntuacion">Puntuación:</string>
+    <string name="activity_one_movie_tv_sinopsis">Sinópsis:</string>
+    <string name="activity_movies_b_retry">Reintentar</string>
+    <string name="activity_movies_tv_error">Error al traer los datos del servidor</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

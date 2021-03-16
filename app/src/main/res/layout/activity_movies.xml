@@ -7,47 +7,63 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     android:weightSum="100"
 
     tools:context=".movies.view.MoviesActivity">
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/sSpinner"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:entries="@array/listaOpciones"
         android:layout_weight="4" />
 
-    <!--<LinearLayout
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
-        android:orientation="horizontal"
-        android:weightSum="100"
-        android:layout_margin="2dp">
+        android:layout_weight="96">
+    </FrameLayout>
 
-
-        <Button
-            android:id="@+id/btVotos"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="50"
-            android:text="Mas Votadas" />
-
-        <Button
-            android:id="@+id/btIdiomas"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="50"
-            android:text="Por Idioma" />
-
-    </LinearLayout>-->
-
-    <androidx.recyclerview.widget.RecyclerView
+    <!--<androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLista"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="96" />
+        android:layout_weight="96" />-->
+
+    <LinearLayout
+        android:id="@+id/llLayoutError"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_movies_tv_error"
+            android:fontFamily="@font/russo_one"
+            android:textSize="20sp"
+            android:textColor="@color/colorBlack"/>
+
+        <Button
+            android:id="@+id/bRetry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/activity_movies_b_retry" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="80dp"
+        android:layout_height="80dp"/>
 
 
 </LinearLayout>

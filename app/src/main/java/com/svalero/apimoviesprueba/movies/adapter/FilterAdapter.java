@@ -1,4 +1,4 @@
-package com.svalero.apimoviesprueba.filtromovies.adapter;
+package com.svalero.apimoviesprueba.movies.adapter;
 
 import android.content.Context;
 import android.content.Intent;

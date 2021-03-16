@@ -15,7 +15,12 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "String", "URL_SERVER", '"https://api.themoviedb.org/3/movie/popular?api_key=7e20756ea67b5217bad3146ba5b0c0e2&language=es-ES&page=1"'
+        }
         release {
+            buildConfigField "String", "URL_SERVER", '"https://api.themoviedb.org/3/movie/popular?api_key=7e20756ea67b5217bad3146ba5b0c0e2&language=es-ES&page=1"'
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -33,5 +38,4 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
-
 }

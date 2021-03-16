@@ -24,7 +24,7 @@ public class MoviesPresenter implements MoviesContract.Presenter {
             }
             @Override
             public void reject(String error) {
-                vista.error("Problemas al traer los datos.");
+                vista.error(error);
             }
         });
     }

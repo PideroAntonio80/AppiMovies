@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ApiMoviesPrueba</string>
+    <string name="language_title">Language:</string>
+    <string name="date_film_detail">Date:</string>
+    <string name="votes_film_detail">Votes:</string>
+    <string name="activity_one_movie_tv_puntuacion">Rate:</string>
+    <string name="activity_one_movie_tv_sinopsis">synopsis:</string>
+    <string name="activity_movies_b_retry">Retry</string>
+    <string name="activity_movies_tv_error">Error, coundn\'t bring data from server</string>
+</resources>

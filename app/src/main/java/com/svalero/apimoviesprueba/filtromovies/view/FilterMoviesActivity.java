@@ -1,7 +1,6 @@
 package com.svalero.apimoviesprueba.filtromovies.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,11 +9,9 @@ import android.widget.Toast;
 
 import com.svalero.apimoviesprueba.R;
 import com.svalero.apimoviesprueba.beans.Movie;
-import com.svalero.apimoviesprueba.filtromovies.adapter.FilterAdapter;
+import com.svalero.apimoviesprueba.movies.adapter.FilterAdapter;
 import com.svalero.apimoviesprueba.filtromovies.contract.FilterMoviesContract;
 import com.svalero.apimoviesprueba.filtromovies.presenter.FilterMoviesPresenter;
-import com.svalero.apimoviesprueba.movies.adapter.ListAdapter;
-import com.svalero.apimoviesprueba.movies.presenter.MoviesPresenter;
 
 import java.util.ArrayList;
 
@@ -76,7 +73,3 @@ public class FilterMoviesActivity extends AppCompatActivity implements FilterMov
         Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
     }
 }
-
-/*for (int i = 0; i < 10; i++) {
-            System.out.println(Movie.getListaFilterVotos().get(i).getVotos());
-        }*/

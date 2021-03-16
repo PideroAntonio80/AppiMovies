@@ -4,11 +4,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class Movie {
+public class Movie implements Serializable {
     private static final String ID = "id";
     private static final String TITLE = "title";
     private static final String OVERVIEW = "overview";
@@ -131,6 +132,26 @@ public class Movie {
     }
 
     public static ArrayList<Movie> getListaFilterVotos() {
+        Collections.sort(lista, new Comparator<Movie>() {
+            @Override
+            public int compare(Movie o1, Movie o2) {
+                return new Integer(o2.getVotos()).compareTo(new Integer(o1.getVotos()));
+            }
+        });
+        return lista;
+    }
+
+    public static ArrayList<Movie> getListaFilterPuntos(ArrayList<Movie> lista) {
+        Collections.sort(lista, new Comparator<Movie>() {
+            @Override
+            public int compare(Movie o1, Movie o2) {
+                return Integer.parseInt(new String(String.valueOf(o2.getPuntos().compareTo(new String(o1.getPuntos())))));
+            }
+        });
+        return lista;
+    }
+
+    public static ArrayList<Movie> getListaFilterVotos(ArrayList<Movie> lista) {
         Collections.sort(lista, new Comparator<Movie>() {
             @Override
             public int compare(Movie o1, Movie o2) {

@@ -1,24 +1,19 @@
 package com.svalero.apimoviesprueba.movies.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
 
 import com.svalero.apimoviesprueba.R;
 import com.svalero.apimoviesprueba.beans.Movie;
-import com.svalero.apimoviesprueba.filtromovies.view.FilterMoviesActivity;
-import com.svalero.apimoviesprueba.movies.adapter.ListAdapter;
 import com.svalero.apimoviesprueba.movies.contract.MoviesContract;
 import com.svalero.apimoviesprueba.movies.presenter.MoviesPresenter;
 
@@ -26,21 +21,27 @@ import java.util.ArrayList;
 
 public class MoviesActivity extends AppCompatActivity implements MoviesContract.View {
 
-    private RecyclerView recycler;
     private MoviesPresenter moviesPresenter;
-    private RecyclerView.LayoutManager lManager;
-    private DividerItemDecoration divider;
     private Spinner spinner;
+    private LinearLayout layoutError;
+    private ProgressBar loading;
+    private Button retry;
+    private ArrayList<Movie> originalMovies;
+    private ArrayList<Movie> movies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
 
+        initComponents();
+
+        loading.setVisibility(View.VISIBLE);
+        spinner.setVisibility(View.GONE);
+        layoutError.setVisibility(View.GONE);
+
         moviesPresenter = new MoviesPresenter(this);
         moviesPresenter.getMovies();
-
-        spinner = findViewById(R.id.spinner);
 
         ArrayAdapter<CharSequence> spinAdapter = ArrayAdapter.createFromResource(this,
                 R.array.listaOpciones, android.R.layout.simple_spinner_dropdown_item);
@@ -50,15 +51,13 @@ public class MoviesActivity extends AppCompatActivity implements MoviesContract.
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (parent.getSelectedItem().toString().equals("--Por Puntuacion--")){
-                    Intent navegar = new Intent(getBaseContext(), FilterMoviesActivity.class);
-                    navegar.putExtra("opcion", 1);
-                    spinner.setSelection(0);
-                    startActivity(navegar);
+                    showFragment(ListRateFragment.newInstance(new ArrayList<Movie>(movies)));
                 }
                 else if (parent.getSelectedItem().toString().equals("--Por Votos--")){
-                    Intent navegar2 = new Intent(getBaseContext(), FilterMoviesActivity.class);
-                    spinner.setSelection(0);
-                    startActivity(navegar2);
+                    showFragment(ListVotesFragment.newInstance(new ArrayList<Movie>(movies)));
+                }
+                else if (parent.getSelectedItem().toString().equals("Principal")){
+                    showFragment(ListMoviesFragment.newInstance(new ArrayList<Movie>(movies)));
                 }
             }
 
@@ -68,31 +67,48 @@ public class MoviesActivity extends AppCompatActivity implements MoviesContract.
             }
         });
 
+        retry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loading.setVisibility(View.VISIBLE);
+                spinner.setVisibility(View.GONE);
+                layoutError.setVisibility(View.GONE);
+            }
+        });
+
+    }
+
+    public void initComponents() {
+        spinner = findViewById(R.id.sSpinner);
+        layoutError = (LinearLayout) findViewById(R.id.llLayoutError);
+        loading = (ProgressBar) findViewById(R.id.pbLoading);
+        retry = (Button) findViewById(R.id.bRetry);
+    }
+
+    public void showFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, fragment).commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        showFragment(ListMoviesFragment.newInstance(movies));
     }
 
     @Override
     public void success(ArrayList<Movie> movies) {
-        // Obtener el Recycler
-        recycler = (RecyclerView) findViewById(R.id.rvLista);
-        recycler.setHasFixedSize(true);
+        spinner.setVisibility(View.VISIBLE);
+        layoutError.setVisibility(View.GONE);
+        loading.setVisibility(View.GONE);
 
-        // Usar un administrador para LinearLayout
-        // 1º) Tipo Lista
-        // 2º) Tipo Grid
-        lManager = new LinearLayoutManager(this);
-        recycler.setLayoutManager(lManager);
-        // Crear un nuevo adaptador
-        // adapter = new AdapterMovie(movies);
-        //recycler.setAdapter(adapter);
-        ListAdapter listAdapter = new ListAdapter(movies);
-        divider = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        divider.setDrawable(getResources().getDrawable(R.drawable.recyclerview_divider));
-        recycler.addItemDecoration(divider);
-        recycler.setAdapter(listAdapter);
+        this.movies = movies;
+
+        showFragment(ListMoviesFragment.newInstance(movies));
     }
 
     @Override
     public void error(String message) {
-        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        layoutError.setVisibility(View.VISIBLE);
+        spinner.setVisibility(View.GONE);
+        loading.setVisibility(View.GONE);
     }
 }
