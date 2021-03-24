@@ -1,19 +1,16 @@
 package com.svalero.apimoviesprueba.onemovie.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.squareup.picasso.Picasso;
 import com.svalero.apimoviesprueba.R;
 import com.svalero.apimoviesprueba.beans.Movie;
-import com.svalero.apimoviesprueba.movies.adapter.ListAdapter;
-import com.svalero.apimoviesprueba.onemovie.contract.OneMovieContract;
-import com.svalero.apimoviesprueba.onemovie.presenter.OneMoviePresenter;
 
-public class OneMovieActivity extends AppCompatActivity implements OneMovieContract.View {
+public class OneMovieActivity extends AppCompatActivity /*implements OneMovieContract.View*/ {
 
     private ImageView image;
     private TextView tvTitulo;
@@ -23,9 +20,8 @@ public class OneMovieActivity extends AppCompatActivity implements OneMovieContr
     private TextView tvVotos;
     private TextView tvSinopsis;
 
-    private OneMoviePresenter oneMoviePresenter;
+//    private OneMoviePresenter oneMoviePresenter;
     private Movie movie;
-    private String titulo = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +32,10 @@ public class OneMovieActivity extends AppCompatActivity implements OneMovieContr
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
-            titulo = bundle.getString("titulo");
+            movie = (Movie) bundle.getSerializable("my_movie");
         }
 
-        movie = new Movie();
-        movie.setTitulo(titulo);
-
-        oneMoviePresenter = new OneMoviePresenter(this);
-        oneMoviePresenter.getOneMovie(movie);
-
+        showMovie();
     }
 
     public void initComponets() {
@@ -57,9 +48,10 @@ public class OneMovieActivity extends AppCompatActivity implements OneMovieContr
         tvSinopsis = (TextView) findViewById(R.id.tvSinopsis);
     }
 
-    @Override
-    public void showMovie(Movie movie) {
-        Picasso.get().load(movie.getImage()).into(image);
+    public void showMovie() {
+        String urlBase = "https://image.tmdb.org/t/p/original";
+
+        Picasso.get().load(urlBase + movie.getImage()).into(image);
         tvTitulo.setText(movie.getTitulo());
         tvLengua.setText(movie.getLengua());
         tvFecha.setText(movie.getFecha());

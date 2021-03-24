@@ -7,36 +7,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="100"
     tools:context=".SplashActivity"
     android:background="@color/colorBlack">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="25"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
         android:fontFamily="@font/luckiest_guy"
         android:gravity="center"
         android:text="D.A.M. MOVIES PRESENTS"
         android:textColor="@color/colorGold"
         android:textSize="50dp" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="35"
-        app:srcCompat="@drawable/cine" />
+        android:layout_height="wrap_content">
+
+        <VideoView
+            android:id="@+id/vvLyon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="25"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/luckiest_guy"
         android:gravity="center"
         android:text="APPI  MOVIE"
         android:textColor="@color/colorGold"
         android:textSize="50dp"  />
+    
 </LinearLayout>

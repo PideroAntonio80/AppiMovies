@@ -3,6 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/alfa_slab_one</item>
         <item>@font/bilbo_swash_caps</item>
+        <item>@font/faster_one</item>
         <item>@font/holtwood_one_sc</item>
         <item>@font/luckiest_guy</item>
         <item>@font/playball</item>

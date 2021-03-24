@@ -22,7 +22,7 @@ public class ListMoviesFragment extends Fragment {
     private View view;
     private RecyclerView recycler;
     private RecyclerView.LayoutManager lManager;
-    private DividerItemDecoration divider;
+    //private DividerItemDecoration divider;
     private ArrayList<Movie> movies;
 
     private static final String EXTRA_LIST = "param1";
@@ -69,9 +69,9 @@ public class ListMoviesFragment extends Fragment {
 
         ListAdapter listAdapter = new ListAdapter(movies);
         listAdapter.notifyDataSetChanged();
-        divider = new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL);
+       /* divider = new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL);
         divider.setDrawable(getResources().getDrawable(R.drawable.recyclerview_divider));
-        recycler.addItemDecoration(divider);
+        recycler.addItemDecoration(divider);*/
         recycler.setAdapter(listAdapter);
     }
 }

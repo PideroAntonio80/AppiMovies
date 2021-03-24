@@ -7,6 +7,10 @@
     <string name="activity_one_movie_tv_sinopsis">Sinópsis:</string>
     <string name="activity_movies_b_retry">Reintentar</string>
     <string name="activity_movies_tv_error">Error al traer los datos del servidor</string>
+    <string name="bottom_bar_pelis">Pelis</string>
+    <string name="bottom_bar_votos">Votos</string>
+    <string name="bottom_bar_puntos">Puntos</string>
+    <string name="bottom_bar_music">Spot</string>
+    <string name="movierecord">MOVIERECORD</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

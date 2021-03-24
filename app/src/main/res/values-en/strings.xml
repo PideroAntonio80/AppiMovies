@@ -8,4 +8,9 @@
     <string name="activity_one_movie_tv_sinopsis">synopsis:</string>
     <string name="activity_movies_b_retry">Retry</string>
     <string name="activity_movies_tv_error">Error, coundn\'t bring data from server</string>
+    <string name="bottom_bar_pelis">Movies</string>
+    <string name="bottom_bar_votos">Votes</string>
+    <string name="bottom_bar_puntos">Rate</string>
+    <string name="bottom_bar_music">Music</string>
+    <string name="movierecord">MOVIERECORD</string>
 </resources>

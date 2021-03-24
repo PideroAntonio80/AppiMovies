@@ -6,10 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -30,12 +30,14 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterView
         public TextView puntos;
         public TextView votos;
         public Context context;
-        public LinearLayout row;
+        public CardView row;
+
+        public Movie myMovie;
 
         public FilterViewHolder(View v) {
             super(v);
             context = v.getContext();
-            row = v.findViewById(R.id.rowFilter);
+            row = v.findViewById(R.id.rowFilterCard);
             imgF = (ImageView) v.findViewById(R.id.imgMovieFilter);
             tituloF = (TextView) v.findViewById(R.id.txtTituloFilter);
             fechaF = (TextView) v.findViewById(R.id.txtFechaFilter);
@@ -48,8 +50,7 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterView
         public void onClick(View v) {
 
             Intent intent = new Intent(context, OneMovieActivity.class);
-            intent.putExtra("titulo", tituloF.getText());
-            intent.putExtra("fecha", fechaF.getText());
+            intent.putExtra("my_movie", myMovie);
             context.startActivity(intent);
         }
     }
@@ -62,18 +63,22 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterView
     @NonNull
     @Override
     public FilterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_filter, parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_filter_card, parent,false);
         return new FilterViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull FilterViewHolder holder, int position) {
+        String urlBase = "https://image.tmdb.org/t/p/original";
+
         Movie movie = lstMoviesFilter.get(position);
-        Picasso.get().load(movie.getImage()).into(holder.imgF);
+
+        Picasso.get().load(urlBase + movie.getImage()).into(holder.imgF);
         holder.tituloF.setText(movie.getTitulo());
         holder.fechaF.setText(movie.getFecha());
         holder.puntos.setText(movie.getPuntos());
         holder.votos.setText(String.valueOf(movie.getVotos()));
+        holder.myMovie = movie;
 
     }
 

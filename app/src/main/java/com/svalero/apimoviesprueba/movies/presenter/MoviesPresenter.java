@@ -1,5 +1,7 @@
 package com.svalero.apimoviesprueba.movies.presenter;
 
+import android.content.Context;
+
 import com.svalero.apimoviesprueba.beans.Movie;
 import com.svalero.apimoviesprueba.movies.contract.MoviesContract;
 import com.svalero.apimoviesprueba.movies.model.MoviesModel;
@@ -16,8 +18,8 @@ public class MoviesPresenter implements MoviesContract.Presenter {
         this.moviesModel = new MoviesModel();
     }
     @Override
-    public void getMovies() {
-        moviesModel.getMoviesWS(new MoviesContract.Model.OnLstMoviesListener() {
+    public void getMovies(Context context) {
+        moviesModel.getMoviesWS(context, new MoviesContract.Model.OnLstMoviesListener() {
             @Override
             public void resolve(ArrayList<Movie> movies) {
                 vista.success(movies);

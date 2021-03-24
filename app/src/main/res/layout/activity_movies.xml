@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,34 +8,32 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:weightSum="100"
 
     tools:context=".movies.view.MoviesActivity">
 
-    <Spinner
-        android:id="@+id/sSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:entries="@array/listaOpciones"
-        android:layout_weight="4" />
-
     <FrameLayout
         android:id="@+id/fragmentContainer"
+        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="96">
+        android:layout_height="wrap_content">
     </FrameLayout>
 
-    <!--<androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvLista"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="96" />-->
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:elevation="5dp"
+        app:menu="@menu/bottom_bar"
+        app:labelVisibilityMode="labeled"
+        app:itemBackground="@color/colorPurple"
+        app:itemIconTint="@color/colorWhite"
+        app:itemTextColor="@color/colorWhite"
+        android:layout_alignParentBottom="true" />
 
     <LinearLayout
         android:id="@+id/llLayoutError"
         android:visibility="gone"
-        tools:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -64,6 +62,4 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="80dp"
         android:layout_height="80dp"/>
-
-
-</LinearLayout>
+</RelativeLayout>

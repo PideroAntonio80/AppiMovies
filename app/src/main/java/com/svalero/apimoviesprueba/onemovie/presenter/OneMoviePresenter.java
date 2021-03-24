@@ -1,13 +1,15 @@
 package com.svalero.apimoviesprueba.onemovie.presenter;
 
+import android.content.Context;
+
 import com.svalero.apimoviesprueba.beans.Movie;
 import com.svalero.apimoviesprueba.onemovie.contract.OneMovieContract;
 import com.svalero.apimoviesprueba.onemovie.model.OneMovieModel;
 import com.svalero.apimoviesprueba.onemovie.view.OneMovieActivity;
 
-public class OneMoviePresenter implements OneMovieContract.Presenter {
+public class OneMoviePresenter /*implements OneMovieContract.Presenter*/ {
 
-    private OneMovieModel oneMovieModel;
+   /* private OneMovieModel oneMovieModel;
     private OneMovieActivity vista;
 
     public OneMoviePresenter(OneMovieActivity vista) {
@@ -23,9 +25,9 @@ public class OneMoviePresenter implements OneMovieContract.Presenter {
     }
 
     @Override
-    public void getOneMovie(Movie movie) {
+    public void getOneMovie(Context context, Movie movie) {
         if(oneMovieModel != null) {
-            oneMovieModel.getOneMovieFromList(movie);
+            oneMovieModel.getOneMovieFromList(context, movie);
         }
-    }
+    }*/
 }

@@ -1,62 +1,39 @@
 package com.svalero.apimoviesprueba.movies.model;
 
-import android.os.AsyncTask;
+import android.content.Context;
 
-import com.svalero.apimoviesprueba.BuildConfig;
 import com.svalero.apimoviesprueba.beans.Movie;
+import com.svalero.apimoviesprueba.beans.MoviesAPIResult;
 import com.svalero.apimoviesprueba.movies.contract.MoviesContract;
-import com.svalero.apimoviesprueba.utils.Post;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.svalero.apimoviesprueba.retrofit.MovieNetwork;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MoviesModel implements MoviesContract.Model {
-    private static final String URL = BuildConfig.URL_SERVER;
-    private ArrayList<Movie> lstArrayMovies;
-    OnLstMoviesListener onLstMoviesListener;
 
     @Override
-    public void getMoviesWS(final OnLstMoviesListener onLstMoviesListener) {
-        this.onLstMoviesListener = onLstMoviesListener;
-        ApiCollector apiCollector = new ApiCollector();
-        apiCollector.execute();
-    }
+    public void getMoviesWS(Context context, final OnLstMoviesListener onLstMoviesListener) {
 
-    /*MONTO LA CÁPSULA QUE ME PERMITE VIAJAR AL API*/
+        MovieNetwork movieNetwork = new MovieNetwork(context);
+        final Call<MoviesAPIResult> request = movieNetwork.getMovies();
 
-    class ApiCollector extends AsyncTask<String, Integer, ArrayList<Movie>> {
-
-        @Override
-        protected ArrayList<Movie> doInBackground(String... strings) {
-            Post post = new Post();
-
-            /*HashMap<String, String> datos = new HashMap();
-             //CLAVE-VALOR      api_key = d9c4177bb1cc819d43088d25fbe2474c
-            datos.put("api_key", "7e20756ea67b5217bad3146ba5b0c0e2");
-            datos.put("language", "en-US");
-            datos.put("page", "1");*/
-            try {
-                JSONObject objectMovies = post.getServerDataGetObject(URL);
-                JSONArray lstMovies = objectMovies.getJSONArray("results");
-                lstArrayMovies = Movie.getArrayListFromJSON(lstMovies);
-            } catch (JSONException je) {
-                je.printStackTrace();
+        request.enqueue(new Callback<MoviesAPIResult>() {
+            @Override
+            public void onResponse(Call<MoviesAPIResult> call, Response<MoviesAPIResult> response) {
+                if (response != null && response.body() != null) {
+                    onLstMoviesListener.resolve(new ArrayList<Movie>(response.body().getResults()));
+                }
             }
-            return lstArrayMovies;
-        }
 
-        @Override
-        protected void onPostExecute(ArrayList<Movie> lstArrayMovies) {
-            if(lstArrayMovies!=null && lstArrayMovies.size()>0){
-                onLstMoviesListener.resolve(lstArrayMovies);
-
-            }else{
-                onLstMoviesListener.reject("Error al traer los datos del Servidor.");
+            @Override
+            public void onFailure(Call<MoviesAPIResult> call, Throwable t) {
+                    t.printStackTrace();
+                    onLstMoviesListener.reject(t.getLocalizedMessage());
             }
-        }
+        });
     }
 }
