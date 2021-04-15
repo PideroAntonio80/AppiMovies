@@ -14,11 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.svalero.apimoviesprueba.R;
 import com.svalero.apimoviesprueba.beans.Movie;
 import com.svalero.apimoviesprueba.movies.contract.MoviesContract;
 import com.svalero.apimoviesprueba.movies.presenter.MoviesPresenter;
-import com.svalero.apimoviesprueba.trailer.TrailerActivity;
+import com.svalero.apimoviesprueba.opening.TrailerActivity;
 
 import java.util.ArrayList;
 

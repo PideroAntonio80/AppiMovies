@@ -1,16 +1,23 @@
-package com.svalero.apimoviesprueba.onemovie.view;
+package com.svalero.apimoviesprueba.one_movie;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
+import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 import com.svalero.apimoviesprueba.R;
 import com.svalero.apimoviesprueba.beans.Movie;
 
-public class OneMovieActivity extends AppCompatActivity /*implements OneMovieContract.View*/ {
+public class OneMovieActivity extends AppCompatActivity {
 
     private ImageView image;
     private TextView tvTitulo;
@@ -19,8 +26,10 @@ public class OneMovieActivity extends AppCompatActivity /*implements OneMovieCon
     private TextView tvPuntos;
     private TextView tvVotos;
     private TextView tvSinopsis;
+    private FloatingActionButton fabLike;
 
-//    private OneMoviePresenter oneMoviePresenter;
+    boolean click = false;
+
     private Movie movie;
 
     @Override
@@ -36,6 +45,25 @@ public class OneMovieActivity extends AppCompatActivity /*implements OneMovieCon
         }
 
         showMovie();
+
+        fabLike.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                click = !click;
+                Interpolator interpolador = AnimationUtils.loadInterpolator(getBaseContext(), android.R.interpolator.fast_out_slow_in);
+                v.animate()
+                        .rotation(click ? 90f : 0)
+                        .setInterpolator(interpolador)
+                        .start();
+
+                int colour = (click) ? Color.parseColor("#B2A42C") : Color.WHITE;
+                fabLike.setColorFilter(colour);
+
+                String message = (click) ? "Guardada en favoritos" : "Eliminada de favoritos";
+                showToast(message);
+            }
+        });
     }
 
     public void initComponets() {
@@ -46,6 +74,8 @@ public class OneMovieActivity extends AppCompatActivity /*implements OneMovieCon
         tvPuntos = (TextView) findViewById(R.id.tvPuntos);
         tvVotos = (TextView) findViewById(R.id.tvVotos);
         tvSinopsis = (TextView) findViewById(R.id.tvSinopsis);
+        tvSinopsis.setMovementMethod(new ScrollingMovementMethod());
+        fabLike = (FloatingActionButton) findViewById(R.id.fab_like);
     }
 
     public void showMovie() {
@@ -58,5 +88,9 @@ public class OneMovieActivity extends AppCompatActivity /*implements OneMovieCon
         tvPuntos.setText(movie.getPuntos());
         tvVotos.setText(String.valueOf(movie.getVotos()));
         tvSinopsis.setText(movie.getSinopsis());
+    }
+
+    public void showToast (String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }

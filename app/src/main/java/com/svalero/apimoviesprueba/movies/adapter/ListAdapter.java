@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.svalero.apimoviesprueba.R;
 import com.svalero.apimoviesprueba.beans.Movie;
-import com.svalero.apimoviesprueba.onemovie.view.OneMovieActivity;
+import com.svalero.apimoviesprueba.one_movie.OneMovieActivity;
 
 import java.util.ArrayList;
 

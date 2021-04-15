@@ -1,4 +1,4 @@
-package com.svalero.apimoviesprueba.trailer;
+package com.svalero.apimoviesprueba.opening;
 
 import androidx.appcompat.app.AppCompatActivity;
 

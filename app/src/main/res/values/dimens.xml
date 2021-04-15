@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="card_movie_margin">5dp</dimen>
+    <dimen name="card_movie_margin">3dp</dimen>
     <dimen name="card_movie_height">150dp</dimen>
+    <dimen name="onemovie_image_height">350dp</dimen>
+    <dimen name="onemovie_fab_elevation">6dp</dimen>
+    <dimen name="onemovie_fab_marginTop">400dp</dimen>
+    <dimen name="onemovie_fab_marginRight">15dp</dimen>
 </resources>

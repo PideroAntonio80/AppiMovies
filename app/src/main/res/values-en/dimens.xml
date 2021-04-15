@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="onemovie_image_height">250dp</dimen>
+    <dimen name="onemovie_fab_marginTop">225dp</dimen>
+    <dimen name="onemovie_fab_marginRight">15dp</dimen>
+</resources>

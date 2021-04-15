@@ -9,7 +9,7 @@
     android:gravity="center"
     android:padding="12dp"
     android:background="@color/colorGold"
-    tools:context=".trailer.TrailerActivity">
+    tools:context=".opening.TrailerActivity">
 
     <FrameLayout
         android:layout_width="match_parent"

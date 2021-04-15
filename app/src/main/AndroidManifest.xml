@@ -11,24 +11,22 @@
         android:roundIcon="@drawable/cine"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".trailer.TrailerActivity">
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
-        <activity android:name=".onemovie.view.OneMovieActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".opening.TrailerActivity" />
+        <activity android:name=".one_movie.OneMovieActivity" />
+        <activity android:name=".opening.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".filtromovies.view.FilterMoviesActivity" />
-        <activity android:name=".movies.view.MoviesActivity" />
+        <activity android:name=".movies.view.MoviesActivity" >
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

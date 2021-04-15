@@ -1,4 +1,4 @@
-package com.svalero.apimoviesprueba;
+package com.svalero.apimoviesprueba.opening;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
+import com.svalero.apimoviesprueba.R;
 import com.svalero.apimoviesprueba.movies.view.MoviesActivity;
 
 public class SplashActivity extends AppCompatActivity {

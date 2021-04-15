@@ -1,38 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="100"
-    android:orientation="vertical"
+    android:layout_margin="@dimen/card_movie_margin"
     android:background="@color/colorGold"
 
-    tools:context=".onemovie.view.OneMovieActivity">
+    tools:context=".one_movie.OneMovieActivity">
 
     <ImageView
         android:id="@+id/ivCaratula"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="40"
+        android:layout_height="@dimen/onemovie_image_height"
+        android:scaleType="fitXY"
         android:src="@drawable/ic_movie_creation_black_24dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="mini"
+        android:elevation="@dimen/onemovie_fab_elevation"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/onemovie_fab_marginTop"
+        android:layout_marginRight="@dimen/onemovie_fab_marginRight"
+        android:backgroundTint="@color/colorPurple"
+        app:tint="@color/colorWhite"
+        app:borderWidth="0dp"
+        app:srcCompat="@drawable/ic_baseline_flag_24" />
 
     <TextView
         android:id="@+id/tvTitulo"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="12"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivCaratula"
         android:gravity="center"
         android:textColor="@color/colorPurple"
         android:textSize="26sp"
         tools:text="Titulo"/>
 
     <LinearLayout
+        android:id="@+id/ll_title"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTitulo"
         android:weightSum="10"
         android:orientation="horizontal">
 
@@ -50,15 +64,16 @@
             android:layout_height="match_parent"
             android:layout_weight="7.5"
             android:paddingRight="12dp"
-            android:textColor="@color/colorPurple"
+            android:textColor="@color/colorBlack"
             tools:text="spanish" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_date"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_title"
         android:weightSum="10"
         android:orientation="horizontal">
 
@@ -76,15 +91,16 @@
             android:layout_height="match_parent"
             android:layout_weight="7.5"
             android:paddingRight="15dp"
-            android:textColor="@color/colorPurple"
+            android:textColor="@color/colorBlack"
             tools:text="TextView" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_votes"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_date"
         android:weightSum="10"
         android:orientation="horizontal">
 
@@ -102,15 +118,16 @@
             android:layout_height="match_parent"
             android:layout_weight="7.5"
             android:paddingRight="15dp"
-            android:textColor="@color/colorPurple"
+            android:textColor="@color/colorBlack"
             tools:text="TextView" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_rate"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_votes"
         android:weightSum="10"
         android:orientation="horizontal">
 
@@ -128,7 +145,7 @@
             android:layout_height="match_parent"
             android:layout_weight="7.5"
             android:paddingRight="15dp"
-            android:textColor="@color/colorPurple"
+            android:textColor="@color/colorBlack"
             tools:text="TextView" />
 
     </LinearLayout>
@@ -136,8 +153,8 @@
     <LinearLayout
 
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="28"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_rate"
         android:weightSum="10"
         android:orientation="horizontal">
 
@@ -155,9 +172,10 @@
             android:layout_height="match_parent"
             android:layout_weight="7.5"
             android:paddingRight="15dp"
-            android:textColor="@color/colorPurple"
+            android:scrollbars="vertical"
+            android:textColor="@color/colorBlack"
             tools:text="TextView" />
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
