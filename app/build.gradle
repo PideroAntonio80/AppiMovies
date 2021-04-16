@@ -19,11 +19,15 @@ android {
             buildConfigField "String", "URL_SERVER", '"https://api.themoviedb.org/3/"'
         }
         release {
-            buildConfigField "String", "URL_SERVER", '"https://api.themoviedb.org/3/movie/popular?api_key=7e20756ea67b5217bad3146ba5b0c0e2&language=es-ES&page=1"'
+            buildConfigField "String", "URL_SERVER", '"https://api.themoviedb.org/3/"'
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

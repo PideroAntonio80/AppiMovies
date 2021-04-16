@@ -25,6 +25,11 @@ public class MoviesModel implements MoviesContract.Model {
             @Override
             public void onResponse(Call<MoviesAPIResult> call, Response<MoviesAPIResult> response) {
                 if (response != null && response.body() != null) {
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException ie) {
+                        ie.printStackTrace();
+                    }
                     onLstMoviesListener.resolve(new ArrayList<Movie>(response.body().getResults()));
                 }
             }
